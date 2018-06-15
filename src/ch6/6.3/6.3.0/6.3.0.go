@@ -37,18 +37,22 @@ type StringPair struct {
 	first, second string
 }
 
-func (pair *StringPair) Exchange() {
-	pair.first, pair.second = pair.second, pair.first
+
+func (pair *StringPair) UpperCase() {
+	pair.first = strings.ToUpper(pair.first)
+	pair.second = strings.ToUpper(pair.second)
 }
-func (part *StringPair) UpperCase () {
-	part.first = strings.ToUpper(part.first)
-	part.second = strings.ToUpper(part.second)
-}
+
 
 func (pair *StringPair) FixCase() {
 	pair.first = fixCase(pair.first)
 	pair.second = fixCase(pair.second)
 }
+
+func (pair *StringPair) Exchange() {
+	pair.first, pair.second = pair.second, pair.first
+}
+
 
 type Point [2]int
 func (point *Point) Exchange() {
@@ -141,9 +145,11 @@ func fixCase(str string) string {
 func test3() {
 	lobelia := StringPair{"LOBELIA", "SACKVILLE-BGGINS"}
 	lobelia.FixCase()
+	fmt.Println(lobelia)
 }
 
 func main() {
 	test()
 	test2()
+	test3()
 }
